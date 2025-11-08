@@ -1,0 +1,2180 @@
+Settings in use:
+  APIGEE_ORG=plentiful-story-6712
+  APIGEE_ENV=eval
+  PROXY=testable-v1
+  APIGEE_ENDPOINT=https://apigee.example.demo.altostrat.com
+
+
+Checking for existence of API testable-v1 ...
+curl -X GET https://apigee.googleapis.com/v1/organizations/plentiful-story-6712/apis/testable-v1
+==> 200
+
+Getting deployments of API testable-v1 ...
+curl -X GET https://apigee.googleapis.com/v1/organizations/plentiful-story-6712/environments/eval/apis/testable-v1/deployments
+==> 200
+
+Creating a Debug session for that proxy....
+curl -X POST https://apigee.googleapis.com/v1/organizations/plentiful-story-6712/environments/eval/apis/testable-v1/revisions/1/debugsessions -H content-type: application/json -d {  "timeout": "600" }
+==> 200
+
+The debug session id is 828d9eb6-b46a-4173-80d8-260573370168 ...
+
+Waiting a bit for the debug session creation....
+
+Invoking the proxy wth no authentication... This will result in a 401...
+curl -X GET https://apigee.example.demo.altostrat.com/testable-v1/urlpath
+==> 401
+{
+  "error" : {
+    "code" : 401.01,
+    "message" : "that request was invalid; pass an Authorization header."
+  }
+}
+
+Getting Debug session info...
+
+Waiting a bit for the debug session collection....
+curl -X GET https://apigee.googleapis.com/v1/organizations/plentiful-story-6712/environments/eval/apis/testable-v1/revisions/1/debugsessions/828d9eb6-b46a-4173-80d8-260573370168/data
+==> 200
+
+The transaction id is apigee-runtime-infinite-epoch--eval-9fe683b-1-16-0-apigee-fkcmb-5 ...
+
+Getting info for that transaction...
+curl -X GET https://apigee.googleapis.com/v1/organizations/plentiful-story-6712/environments/eval/apis/testable-v1/revisions/1/debugsessions/828d9eb6-b46a-4173-80d8-260573370168/data/apigee-runtime-infinite-epoch--eval-9fe683b-1-16-0-apigee-fkcmb-5
+==> 200
+{
+  "completed": true,
+  "point": [
+    {
+      "id": "StateChange",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "From",
+                "value": "REQ_START"
+              },
+              {
+                "name": "To",
+                "value": "REQ_HEADERS_PARSED"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:284"
+        },
+        {
+          "ActionResult": "RequestMessage",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "*/*"
+            },
+            {
+              "name": "host",
+              "value": "apigee.example.demo.altostrat.com"
+            },
+            {
+              "name": "user-agent",
+              "value": "curl/8.16.0"
+            },
+            {
+              "name": "via",
+              "value": "1.1 google"
+            },
+            {
+              "name": "x-apigee-message-id",
+              "value": "f7de66fd-8ad3-4c2a-b786-5380f1fe9cc55"
+            },
+            {
+              "name": "x-apigee-tls-cipher",
+              "value": "TLS_AES_128_GCM_SHA256"
+            },
+            {
+              "name": "x-apigee-tls-protocol",
+              "value": "TLSv1.3"
+            },
+            {
+              "name": "x-apigee-tls-server-name",
+              "value": "apigee.example.demo.altostrat.com"
+            },
+            {
+              "name": "x-apigee-tracking-id",
+              "value": "14e266ce5f053c94146fa00c2d75aabb"
+            },
+            {
+              "name": "x-b3-sampled",
+              "value": "0"
+            },
+            {
+              "name": "x-b3-spanid",
+              "value": "443de1d8acda4c44"
+            },
+            {
+              "name": "x-b3-traceid",
+              "value": "05b0b177416171af443de1d8acda4c44"
+            },
+            {
+              "name": "x-client-cert-chain-verified",
+              "value": "false"
+            },
+            {
+              "name": "x-client-cert-error",
+              "value": "client_cert_not_provided"
+            },
+            {
+              "name": "x-client-cert-fingerprint"
+            },
+            {
+              "name": "x-client-cert-present",
+              "value": "false"
+            },
+            {
+              "name": "x-client-cert-serial"
+            },
+            {
+              "name": "x-client-cert-subject-b64"
+            },
+            {
+              "name": "x-client-cert-uri-sans"
+            },
+            {
+              "name": "x-client-cert-valid-not-after"
+            },
+            {
+              "name": "x-client-cert-valid-not-before"
+            },
+            {
+              "name": "x-cloud-trace-context",
+              "value": "14e266ce5f053c94146fa00c2d75aabb/10675161229449491898"
+            },
+            {
+              "name": "x-envoy-attempt-count",
+              "value": "1"
+            },
+            {
+              "name": "x-forwarded-for",
+              "value": "34.145.46.46,34.111.78.193,10.0.0.2"
+            },
+            {
+              "name": "x-forwarded-proto",
+              "value": "https"
+            },
+            {
+              "name": "x-request-id",
+              "value": "694da59c-522c-4565-9455-fa044be8f8d4"
+            }
+          ],
+          "uRI": "/testable-v1/urlpath",
+          "verb": "GET"
+        }
+      ]
+    },
+    {
+      "id": "FlowInfo",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "environment.orgname",
+                "value": "plentiful-story-6712"
+              },
+              {
+                "name": "environment.name",
+                "value": "eval"
+              },
+              {
+                "name": "environment.qualifiedname",
+                "value": "plentiful-story-6712__eval"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:285"
+        }
+      ]
+    },
+    {
+      "id": "FlowInfo",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "organization.name",
+                "value": "plentiful-story-6712"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:285"
+        }
+      ]
+    },
+    {
+      "id": "FlowInfo",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "apiproxy.qualifiedname",
+                "value": "testable-v1__1"
+              },
+              {
+                "name": "apiproxy.revision",
+                "value": "1"
+              },
+              {
+                "name": "apiproxy.basepath",
+                "value": "/"
+              },
+              {
+                "name": "apiproxy.name",
+                "value": "testable-v1"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:285"
+        }
+      ]
+    },
+    {
+      "id": "FlowInfo",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "proxy.url",
+                "value": "https://apigee.example.demo.altostrat.com/testable-v1/urlpath"
+              },
+              {
+                "name": "proxy.name",
+                "value": "endpoint1"
+              },
+              {
+                "name": "proxy.basepath",
+                "value": "/testable-v1"
+              },
+              {
+                "name": "proxy.client.ip",
+                "value": "34.145.46.46"
+              },
+              {
+                "name": "proxy.pathsuffix",
+                "value": "/urlpath"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:285"
+        }
+      ]
+    },
+    {
+      "id": "FlowInfo",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "virtualhost.port",
+                "value": "8443"
+              },
+              {
+                "name": "virtualhost.aliases.values",
+                "value": "null"
+              },
+              {
+                "name": "virtualhost.name",
+                "value": "default"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:285"
+        }
+      ]
+    },
+    {
+      "id": "FlowInfo",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {},
+          "timestamp": "08-11-25 00:12:44:285"
+        }
+      ]
+    },
+    {
+      "id": "FlowInfo",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "client_ip_resolution.resolved.ip",
+                "value": "34.145.46.46"
+              },
+              {
+                "name": "client_ip_resolution.used.fallback",
+                "value": "false"
+              },
+              {
+                "name": "client_ip_resolution.algorithm",
+                "value": "default"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:285"
+        }
+      ]
+    },
+    {
+      "id": "StateChange",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "From",
+                "value": "REQ_HEADERS_PARSED"
+              },
+              {
+                "name": "To",
+                "value": "PROXY_REQ_FLOW"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:286"
+        },
+        {
+          "ActionResult": "RequestMessage",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "*/*"
+            },
+            {
+              "name": "host",
+              "value": "apigee.example.demo.altostrat.com"
+            },
+            {
+              "name": "user-agent",
+              "value": "curl/8.16.0"
+            },
+            {
+              "name": "via",
+              "value": "1.1 google"
+            },
+            {
+              "name": "x-b3-sampled",
+              "value": "0"
+            },
+            {
+              "name": "x-b3-spanid",
+              "value": "443de1d8acda4c44"
+            },
+            {
+              "name": "x-b3-traceid",
+              "value": "05b0b177416171af443de1d8acda4c44"
+            },
+            {
+              "name": "x-client-cert-chain-verified",
+              "value": "false"
+            },
+            {
+              "name": "x-client-cert-error",
+              "value": "client_cert_not_provided"
+            },
+            {
+              "name": "x-client-cert-fingerprint"
+            },
+            {
+              "name": "x-client-cert-present",
+              "value": "false"
+            },
+            {
+              "name": "x-client-cert-serial"
+            },
+            {
+              "name": "x-client-cert-subject-b64"
+            },
+            {
+              "name": "x-client-cert-uri-sans"
+            },
+            {
+              "name": "x-client-cert-valid-not-after"
+            },
+            {
+              "name": "x-client-cert-valid-not-before"
+            },
+            {
+              "name": "x-cloud-trace-context",
+              "value": "14e266ce5f053c94146fa00c2d75aabb/10675161229449491898"
+            },
+            {
+              "name": "x-envoy-attempt-count",
+              "value": "1"
+            },
+            {
+              "name": "x-forwarded-for",
+              "value": "34.145.46.46,34.111.78.193,10.0.0.2"
+            },
+            {
+              "name": "x-forwarded-proto",
+              "value": "https"
+            },
+            {
+              "name": "x-request-id",
+              "value": "694da59c-522c-4565-9455-fa044be8f8d4"
+            }
+          ],
+          "uRI": "/testable-v1/urlpath",
+          "verb": "GET"
+        }
+      ]
+    },
+    {
+      "id": "FlowInfo",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "api_security_action.time.ms",
+                "value": "0"
+              },
+              {
+                "name": "api_security_action.asn",
+                "value": "396982"
+              },
+              {
+                "name": "api_security_action.regionCode",
+                "value": "US"
+              },
+              {
+                "name": "api_security_action.userAgent",
+                "value": "curl/8.16.0"
+              },
+              {
+                "name": "api_security_action.httpMethod",
+                "value": "GET"
+              },
+              {
+                "name": "api_security_action.action",
+                "value": "ACTION_TYPE_NOT_SET"
+              },
+              {
+                "name": "api_security_action.ip",
+                "value": "34.145.46.46"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:286"
+        }
+      ]
+    },
+    {
+      "id": "Execution",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "type",
+                "value": "ApiSecurityAction"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:287"
+        },
+        {
+          "ActionResult": "RequestMessage",
+          "uRI": "/testable-v1/urlpath",
+          "verb": "GET"
+        },
+        {
+          "ActionResult": "VariableAccess"
+        }
+      ]
+    },
+    {
+      "id": "Condition",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "Expression",
+                "value": "(\"endpoint1\" equals proxy.name)"
+              },
+              {
+                "name": "ExpressionResult",
+                "value": "true"
+              },
+              {
+                "name": "Tree",
+                "value": "PROXY_endpoint1"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:287"
+        },
+        {
+          "ActionResult": "VariableAccess",
+          "accessList": [
+            {
+              "Get": {
+                "name": "request.verb",
+                "value": "GET"
+              }
+            },
+            {
+              "Get": {
+                "name": "client_id",
+                "value": "*****"
+              }
+            },
+            {
+              "Get": {
+                "name": "access_token",
+                "value": "*****"
+              }
+            },
+            {
+              "Get": {
+                "name": "apigee.apiproduct.name"
+              }
+            },
+            {
+              "Get": {
+                "name": "developer.email"
+              }
+            },
+            {
+              "Get": {
+                "name": "developer.app.name"
+              }
+            },
+            {
+              "Get": {
+                "name": "api_security_action"
+              }
+            },
+            {
+              "Get": {
+                "name": "proxy.name",
+                "value": "endpoint1"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FlowInfo",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "proxy.flow.direction",
+                "value": "request"
+              },
+              {
+                "name": "proxy.flow.name",
+                "value": "PreFlow"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:287"
+        }
+      ]
+    },
+    {
+      "id": "FlowInfo",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "current.flow.name",
+                "value": "PreFlow"
+              },
+              {
+                "name": "current.flow.direction",
+                "value": "request"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:287"
+        }
+      ]
+    },
+    {
+      "id": "Execution",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "stepDefinition-displayName",
+                "value": "-NA-"
+              },
+              {
+                "name": "internal",
+                "value": "false"
+              },
+              {
+                "name": "expression",
+                "value": "((request.verb equals \"POST\") and (not(request.header.content-type equals \"application/json\")))"
+              },
+              {
+                "name": "stepDefinition-type",
+                "value": "raisefault"
+              },
+              {
+                "name": "enforcement",
+                "value": "request"
+              },
+              {
+                "name": "type",
+                "value": "RaiseFaultExecution"
+              },
+              {
+                "name": "stepDefinition-enabled",
+                "value": "true"
+              },
+              {
+                "name": "stepDefinition-name",
+                "value": "RF-Invalid-Media-Type"
+              },
+              {
+                "name": "stepDefinition-continueOnError",
+                "value": "false"
+              },
+              {
+                "name": "stepDefinition-async",
+                "value": "false"
+              },
+              {
+                "name": "expressionResult",
+                "value": "false"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:287"
+        },
+        {
+          "ActionResult": "RequestMessage",
+          "uRI": "/testable-v1/urlpath",
+          "verb": "GET"
+        },
+        {
+          "ActionResult": "VariableAccess",
+          "accessList": [
+            {
+              "Get": {
+                "name": "request.verb",
+                "value": "GET"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Condition",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "Expression",
+                "value": "(proxy.pathsuffix matches /urlpath and (request.verb equals \"GET\"))"
+              },
+              {
+                "name": "ExpressionResult",
+                "value": "true"
+              },
+              {
+                "name": "Tree",
+                "value": "t1_REQUEST_FLOW"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:287"
+        },
+        {
+          "ActionResult": "VariableAccess",
+          "accessList": [
+            {
+              "Get": {
+                "name": "proxy.pathsuffix",
+                "value": "/urlpath"
+              }
+            },
+            {
+              "Get": {
+                "name": "request.verb",
+                "value": "GET"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FlowInfo",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "proxy.flow.direction",
+                "value": "request"
+              },
+              {
+                "name": "proxy.flow.description"
+              },
+              {
+                "name": "proxy.flow.name",
+                "value": "t1"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:288"
+        }
+      ]
+    },
+    {
+      "id": "FlowInfo",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "current.flow.description"
+              },
+              {
+                "name": "current.flow.name",
+                "value": "t1"
+              },
+              {
+                "name": "current.flow.direction",
+                "value": "request"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:288"
+        }
+      ]
+    },
+    {
+      "id": "FlowInfo",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "raisefault.RF-Missing-Authz-Header.fault.cause"
+              },
+              {
+                "name": "raisefault.RF-Missing-Authz-Header.failed",
+                "value": "true"
+              },
+              {
+                "name": "raisefault.RF-Missing-Authz-Header.fault.name"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:288"
+        }
+      ]
+    },
+    {
+      "id": "FlowInfo",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "Identifier",
+                "value": "fault"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:288"
+        }
+      ]
+    },
+    {
+      "id": "Error",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "error.class",
+                "value": "com.apigee.kernel.exceptions.spi.UncheckedException"
+              },
+              {
+                "name": "state",
+                "value": "PROXY_REQ_FLOW"
+              },
+              {
+                "name": "type",
+                "value": "ErrorPoint"
+              },
+              {
+                "name": "error",
+                "value": "Raising fault. Fault name : RF-Missing-Authz-Header"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:288"
+        }
+      ]
+    },
+    {
+      "id": "Execution",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "stepDefinition-displayName",
+                "value": "-NA-"
+              },
+              {
+                "name": "internal",
+                "value": "false"
+              },
+              {
+                "name": "expression",
+                "value": "(request.header.authorization equals null)"
+              },
+              {
+                "name": "stepDefinition-type",
+                "value": "raisefault"
+              },
+              {
+                "name": "enforcement",
+                "value": "request"
+              },
+              {
+                "name": "type",
+                "value": "RaiseFaultExecution"
+              },
+              {
+                "name": "result",
+                "value": "false"
+              },
+              {
+                "name": "stepDefinition-enabled",
+                "value": "true"
+              },
+              {
+                "name": "stepDefinition-name",
+                "value": "RF-Missing-Authz-Header"
+              },
+              {
+                "name": "stepDefinition-continueOnError",
+                "value": "false"
+              },
+              {
+                "name": "action",
+                "value": "ABORT"
+              },
+              {
+                "name": "stepDefinition-async",
+                "value": "false"
+              },
+              {
+                "name": "expressionResult",
+                "value": "true"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:289"
+        },
+        {
+          "ActionResult": "ErrorMessage",
+          "reasonPhrase": "Unauthorized",
+          "statusCode": "401",
+          "content": "{\"error\":{\"code\":401.01,\"message\":\"that request was invalid; pass an Authorization header.\"}}"
+        },
+        {
+          "ActionResult": "VariableAccess",
+          "accessList": [
+            {
+              "Set": {
+                "name": "raisefault.failed",
+                "success": true,
+                "value": "true"
+              }
+            },
+            {
+              "Get": {
+                "name": "raisefault.RF-Missing-Authz-Header"
+              }
+            },
+            {
+              "Set": {
+                "name": "regex1",
+                "success": true,
+                "value": "(https:\\/\\/[^\\/]+)\\/.+"
+              }
+            },
+            {
+              "Set": {
+                "name": "group1",
+                "success": true,
+                "value": "$1"
+              }
+            },
+            {
+              "Get": {
+                "name": "proxy.url",
+                "value": "https://apigee.example.demo.altostrat.com/testable-v1/urlpath"
+              }
+            },
+            {
+              "Get": {
+                "name": "regex1",
+                "value": "(https:\\/\\/[^\\/]+)\\/.+"
+              }
+            },
+            {
+              "Get": {
+                "name": "group1",
+                "value": "$1"
+              }
+            },
+            {
+              "Set": {
+                "name": "scheme-and-host",
+                "success": true,
+                "value": "https://apigee.example.demo.altostrat.com"
+              }
+            },
+            {
+              "Get": {
+                "name": "scheme-and-host",
+                "value": "https://apigee.example.demo.altostrat.com"
+              }
+            },
+            {
+              "Get": {
+                "name": "apiproxy.name",
+                "value": "testable-v1"
+              }
+            },
+            {
+              "Set": {
+                "name": "error.header.WWW-Authenticate",
+                "success": true,
+                "value": "Bearer realm=\"mcp\", resource_metadata=\"https://apigee.example.demo.altostrat.com/.well-known/oauth-protected-resource/testable-v1/mcp\""
+              }
+            },
+            {
+              "Set": {
+                "name": "error.status.code",
+                "success": true,
+                "value": "401"
+              }
+            },
+            {
+              "Set": {
+                "name": "error.content",
+                "success": true,
+                "value": "{\n  \"error\" : {\n    \"code\" : 401.01,\n    \"message\" : \"that request was invalid; pass an Authorization header.\"\n  }\n}\n"
+              }
+            },
+            {
+              "Set": {
+                "name": "error.header.Content-Type",
+                "success": true,
+                "value": "application/json"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Condition",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "Expression",
+                "value": "((error.state equals PROXY_REQ_FLOW) or (error.state equals PROXY_RESP_FLOW) or ((error.state equals END) and (event.flow.source equals PROXY_RESP_FLOW)))"
+              },
+              {
+                "name": "ExpressionResult",
+                "value": "true"
+              },
+              {
+                "name": "Tree",
+                "value": "PROXY_FAULT_HANDLING"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:290"
+        },
+        {
+          "ActionResult": "VariableAccess",
+          "accessList": [
+            {
+              "Get": {
+                "name": "error.state",
+                "value": "PROXY_REQ_FLOW"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Condition",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "Expression",
+                "value": "(\"endpoint1\" equals proxy.name)"
+              },
+              {
+                "name": "ExpressionResult",
+                "value": "true"
+              },
+              {
+                "name": "Tree",
+                "value": "PROXY_endpoint1"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:290"
+        },
+        {
+          "ActionResult": "VariableAccess",
+          "accessList": [
+            {
+              "Get": {
+                "name": "proxy.name",
+                "value": "endpoint1"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Condition",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "Expression",
+                "value": "(((error.state equals TARGET_REQ_FLOW) or (error.state equals TARGET_RESP_FLOW) or ((error.state equals END) and (event.flow.source equals TARGET_RESP_FLOW))) or ((error.state equals REQ_SENT) or (error.state equals RESP_START)))"
+              },
+              {
+                "name": "ExpressionResult",
+                "value": "false"
+              },
+              {
+                "name": "Tree",
+                "value": "TARGET_FAULT_HANDLING"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:290"
+        },
+        {
+          "ActionResult": "VariableAccess",
+          "accessList": [
+            {
+              "Get": {
+                "name": "error.state",
+                "value": "PROXY_REQ_FLOW"
+              }
+            },
+            {
+              "Get": {
+                "name": "error.state",
+                "value": "PROXY_REQ_FLOW"
+              }
+            },
+            {
+              "Get": {
+                "name": "error.state",
+                "value": "PROXY_REQ_FLOW"
+              }
+            },
+            {
+              "Get": {
+                "name": "error.state",
+                "value": "PROXY_REQ_FLOW"
+              }
+            },
+            {
+              "Get": {
+                "name": "error.state",
+                "value": "PROXY_REQ_FLOW"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Condition",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "Expression",
+                "value": "(\"endpoint1\" equals proxy.name)"
+              },
+              {
+                "name": "ExpressionResult",
+                "value": "true"
+              },
+              {
+                "name": "Tree",
+                "value": "PROXY_endpoint1"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:290"
+        },
+        {
+          "ActionResult": "VariableAccess",
+          "accessList": [
+            {
+              "Get": {
+                "name": "proxy.name",
+                "value": "endpoint1"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FlowInfo",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "faultrule.direction",
+                "value": "request"
+              },
+              {
+                "name": "faultrule.description",
+                "value": "DefaultFaultRule"
+              },
+              {
+                "name": "faultrule.name",
+                "value": "DefaultFaultRule"
+              },
+              {
+                "name": "faultrule.endpoint",
+                "value": "proxy"
+              },
+              {
+                "name": "faultrule.isDefault",
+                "value": "true"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:290"
+        }
+      ]
+    },
+    {
+      "id": "FlowInfo",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "assignmessage.AM-Inject-Proxy-Revision-Header.fault.name"
+              },
+              {
+                "name": "assignmessage.AM-Inject-Proxy-Revision-Header.fault.cause"
+              },
+              {
+                "name": "assignmessage.AM-Inject-Proxy-Revision-Header.failed",
+                "value": "false"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:290"
+        }
+      ]
+    },
+    {
+      "id": "Execution",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "stepDefinition-displayName",
+                "value": "-NA-"
+              },
+              {
+                "name": "internal",
+                "value": "false"
+              },
+              {
+                "name": "stepDefinition-type",
+                "value": "assignmessage"
+              },
+              {
+                "name": "enforcement",
+                "value": "request"
+              },
+              {
+                "name": "type",
+                "value": "AssignMessageExecution"
+              },
+              {
+                "name": "result",
+                "value": "true"
+              },
+              {
+                "name": "stepDefinition-enabled",
+                "value": "true"
+              },
+              {
+                "name": "stepDefinition-name",
+                "value": "AM-Inject-Proxy-Revision-Header"
+              },
+              {
+                "name": "stepDefinition-continueOnError",
+                "value": "false"
+              },
+              {
+                "name": "action",
+                "value": "CONTINUE"
+              },
+              {
+                "name": "stepDefinition-async",
+                "value": "false"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:291"
+        },
+        {
+          "ActionResult": "ErrorMessage",
+          "reasonPhrase": "Unauthorized",
+          "statusCode": "401",
+          "content": "{\"error\":{\"code\":401.01,\"message\":\"that request was invalid; pass an Authorization header.\"}}"
+        },
+        {
+          "ActionResult": "VariableAccess",
+          "accessList": [
+            {
+              "Get": {
+                "name": "assignmessage.AM-Inject-Proxy-Revision-Header"
+              }
+            },
+            {
+              "Get": {
+                "name": "apiproxy.name",
+                "value": "testable-v1"
+              }
+            },
+            {
+              "Get": {
+                "name": "apiproxy.revision",
+                "value": "1"
+              }
+            },
+            {
+              "Set": {
+                "name": "message.header.apiproxy",
+                "success": true,
+                "value": "testable-v1 r1"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Execution",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "type",
+                "value": "CORSResponseOrErrorFlowExecution"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:292"
+        },
+        {
+          "ActionResult": "ErrorMessage",
+          "reasonPhrase": "Unauthorized",
+          "statusCode": "401",
+          "content": "{\"error\":{\"code\":401.01,\"message\":\"that request was invalid; pass an Authorization header.\"}}"
+        },
+        {
+          "ActionResult": "VariableAccess"
+        }
+      ]
+    },
+    {
+      "id": "StateChange",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "From",
+                "value": "ERROR"
+              },
+              {
+                "name": "To",
+                "value": "RESP_SENT"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:292"
+        },
+        {
+          "ActionResult": "ErrorMessage",
+          "headers": [
+            {
+              "name": "apiproxy",
+              "value": "testable-v1 r1"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "WWW-Authenticate",
+              "value": "Bearer realm=\"mcp\",resource_metadata=\"https://apigee.example.demo.altostrat.com/.well-known/oauth-protected-resource/testable-v1/mcp\""
+            }
+          ],
+          "reasonPhrase": "Unauthorized",
+          "statusCode": "401",
+          "content": "{\"error\":{\"code\":401.01,\"message\":\"that request was invalid; pass an Authorization header.\"}}"
+        }
+      ]
+    },
+    {
+      "id": "Condition",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "Expression",
+                "value": "(\"endpoint1\" equals proxy.name)"
+              },
+              {
+                "name": "ExpressionResult",
+                "value": "true"
+              },
+              {
+                "name": "Tree",
+                "value": "PROXY_endpoint1"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:292"
+        },
+        {
+          "ActionResult": "VariableAccess",
+          "accessList": [
+            {
+              "Get": {
+                "name": "proxy.name",
+                "value": "endpoint1"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Condition",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "Expression",
+                "value": "(\"target1\" equals target.name)"
+              },
+              {
+                "name": "ExpressionResult",
+                "value": "false"
+              },
+              {
+                "name": "Tree",
+                "value": "TARGET_target1"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:292"
+        },
+        {
+          "ActionResult": "VariableAccess",
+          "accessList": [
+            {
+              "Get": {
+                "name": "target.name"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "StateChange",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "From",
+                "value": "RESP_SENT"
+              },
+              {
+                "name": "To",
+                "value": "END"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:292"
+        },
+        {
+          "ActionResult": "ErrorMessage",
+          "headers": [
+            {
+              "name": "apiproxy",
+              "value": "testable-v1 r1"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "WWW-Authenticate",
+              "value": "Bearer realm=\"mcp\",resource_metadata=\"https://apigee.example.demo.altostrat.com/.well-known/oauth-protected-resource/testable-v1/mcp\""
+            }
+          ],
+          "reasonPhrase": "Unauthorized",
+          "statusCode": "401",
+          "content": "{\"error\":{\"code\":401.01,\"message\":\"that request was invalid; pass an Authorization header.\"}}"
+        }
+      ]
+    },
+    {
+      "id": "DebugMask",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "SuccessFullyMaskedConfigs",
+                "value": "[]"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:293"
+        }
+      ]
+    },
+    {
+      "id": "Resumed"
+    },
+    {
+      "id": "StateChange",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "From",
+                "value": "END"
+              },
+              {
+                "name": "To",
+                "value": "PROXY_POST_RESP_SENT"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:295"
+        },
+        {
+          "ActionResult": "ErrorMessage",
+          "headers": [
+            {
+              "name": "apiproxy",
+              "value": "testable-v1 r1"
+            },
+            {
+              "name": "Content-Length",
+              "value": "117"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "WWW-Authenticate",
+              "value": "Bearer realm=\"mcp\",resource_metadata=\"https://apigee.example.demo.altostrat.com/.well-known/oauth-protected-resource/testable-v1/mcp\""
+            },
+            {
+              "name": "X-Apigee-dp-color",
+              "value": "1-16-0-apigee-4"
+            },
+            {
+              "name": "X-Apigee-environment",
+              "value": "eval"
+            },
+            {
+              "name": "X-Apigee-fault-code",
+              "value": "steps.raisefault.RaiseFault"
+            },
+            {
+              "name": "X-Apigee-fault-flag",
+              "value": "false"
+            },
+            {
+              "name": "X-Apigee-fault-flow",
+              "value": "t1"
+            },
+            {
+              "name": "X-Apigee-fault-policy",
+              "value": "raisefault/RF-Missing-Authz-Header"
+            },
+            {
+              "name": "X-Apigee-fault-revision",
+              "value": "/organizations/plentiful-story-6712/environments/eval/apiproxies/testable-v1/revisions/1"
+            },
+            {
+              "name": "X-Apigee-fault-source",
+              "value": "policy"
+            },
+            {
+              "name": "X-Apigee-Message-ID",
+              "value": "f7de66fd-8ad3-4c2a-b786-5380f1fe9cc55"
+            },
+            {
+              "name": "X-Apigee-organization",
+              "value": "plentiful-story-6712"
+            },
+            {
+              "name": "X-Apigee-proxy",
+              "value": "/organizations/plentiful-story-6712/environments/eval/apiproxies/testable-v1/revisions/1"
+            },
+            {
+              "name": "X-Apigee-proxy-basepath",
+              "value": "/testable-v1"
+            },
+            {
+              "name": "X-Apigee-region",
+              "value": "us-west1"
+            },
+            {
+              "name": "X-Apigee-Tracking-ID",
+              "value": "14e266ce5f053c94146fa00c2d75aabb"
+            },
+            {
+              "name": "x-request-id",
+              "value": "694da59c-522c-4565-9455-fa044be8f8d4"
+            }
+          ],
+          "reasonPhrase": "Unauthorized",
+          "statusCode": "401",
+          "content": "{\"error\":{\"code\":401.01,\"message\":\"that request was invalid; pass an Authorization header.\"}}"
+        }
+      ]
+    },
+    {
+      "id": "Execution",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "expression",
+                "value": "com.apigee.mint.execution.MintExecution@7c76c979"
+              },
+              {
+                "name": "type",
+                "value": "MintExecution"
+              },
+              {
+                "name": "expressionResult",
+                "value": "false"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:295"
+        },
+        {
+          "ActionResult": "ErrorMessage",
+          "reasonPhrase": "Unauthorized",
+          "statusCode": "401",
+          "content": "{\"error\":{\"code\":401.01,\"message\":\"that request was invalid; pass an Authorization header.\"}}"
+        },
+        {
+          "ActionResult": "VariableAccess"
+        }
+      ]
+    },
+    {
+      "id": "Condition",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "Expression",
+                "value": "(\"endpoint1\" equals proxy.name)"
+              },
+              {
+                "name": "ExpressionResult",
+                "value": "true"
+              },
+              {
+                "name": "Tree",
+                "value": "PROXY_endpoint1"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:295"
+        },
+        {
+          "ActionResult": "VariableAccess",
+          "accessList": [
+            {
+              "Get": {
+                "name": "proxy.name",
+                "value": "endpoint1"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FlowInfo",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "proxy.flow.direction",
+                "value": "response"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:296"
+        }
+      ]
+    },
+    {
+      "id": "FlowInfo",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "current.flow.direction",
+                "value": "response"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:296"
+        }
+      ]
+    },
+    {
+      "id": "Execution",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "expression",
+                "value": "(analytics equals null )"
+              },
+              {
+                "name": "type",
+                "value": "AnalyticsPredefinedVariablesPublisher"
+              },
+              {
+                "name": "expressionResult",
+                "value": "true"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:297"
+        },
+        {
+          "ActionResult": "ErrorMessage",
+          "reasonPhrase": "Unauthorized",
+          "statusCode": "401",
+          "content": "{\"error\":{\"code\":401.01,\"message\":\"that request was invalid; pass an Authorization header.\"}}"
+        },
+        {
+          "ActionResult": "VariableAccess"
+        }
+      ]
+    },
+    {
+      "id": "Execution",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "expression",
+                "value": "(analytics not null)"
+              },
+              {
+                "name": "type",
+                "value": "AnalyticsPublisher"
+              },
+              {
+                "name": "expressionResult",
+                "value": "false"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:297"
+        },
+        {
+          "ActionResult": "ErrorMessage",
+          "reasonPhrase": "Unauthorized",
+          "statusCode": "401",
+          "content": "{\"error\":{\"code\":401.01,\"message\":\"that request was invalid; pass an Authorization header.\"}}"
+        },
+        {
+          "ActionResult": "VariableAccess",
+          "accessList": [
+            {
+              "Get": {
+                "name": "target.name"
+              }
+            },
+            {
+              "Get": {
+                "name": "target.basepath"
+              }
+            },
+            {
+              "Get": {
+                "name": "target.url"
+              }
+            },
+            {
+              "Get": {
+                "name": "target.host"
+              }
+            },
+            {
+              "Get": {
+                "name": "target.ip"
+              }
+            },
+            {
+              "Get": {
+                "name": "client.ip",
+                "value": "10.0.0.2"
+              }
+            },
+            {
+              "Get": {
+                "name": "is.error",
+                "value": "true"
+              }
+            },
+            {
+              "Get": {
+                "name": "target.sent.start.timestamp"
+              }
+            },
+            {
+              "Get": {
+                "name": "target.sent.end.timestamp"
+              }
+            },
+            {
+              "Get": {
+                "name": "target.received.start.timestamp"
+              }
+            },
+            {
+              "Get": {
+                "name": "target.received.end.timestamp"
+              }
+            },
+            {
+              "Get": {
+                "name": "client.received.start.timestamp",
+                "value": "1762560764282"
+              }
+            },
+            {
+              "Get": {
+                "name": "client.received.end.timestamp",
+                "value": "1762560764282"
+              }
+            },
+            {
+              "Get": {
+                "name": "client.sent.start.timestamp",
+                "value": "1762560764293"
+              }
+            },
+            {
+              "Get": {
+                "name": "client.sent.end.timestamp",
+                "value": "1762560764293"
+              }
+            },
+            {
+              "Get": {
+                "name": "message.status.code",
+                "value": "401"
+              }
+            },
+            {
+              "Get": {
+                "name": "request.uri",
+                "value": "/testable-v1/urlpath"
+              }
+            },
+            {
+              "Get": {
+                "name": "request.path",
+                "value": "/testable-v1/urlpath"
+              }
+            },
+            {
+              "Get": {
+                "name": "request.verb",
+                "value": "GET"
+              }
+            },
+            {
+              "Get": {
+                "name": "flow.resource.name"
+              }
+            },
+            {
+              "Get": {
+                "name": "sla"
+              }
+            },
+            {
+              "Get": {
+                "name": "client.received.content.length",
+                "value": "0"
+              }
+            },
+            {
+              "Get": {
+                "name": "target.received.content.length"
+              }
+            },
+            {
+              "Get": {
+                "name": "target.response.status.code"
+              }
+            },
+            {
+              "Get": {
+                "name": "request.header.User-Agent",
+                "value": "curl/8.16.0"
+              }
+            },
+            {
+              "Get": {
+                "name": "request.header.X-Apigee-Client-Device-Id"
+              }
+            },
+            {
+              "Get": {
+                "name": "request.header.X-Apigee-Client-Session-Id"
+              }
+            },
+            {
+              "Get": {
+                "name": "request.header.X-Apigee-Client-Org-Name"
+              }
+            },
+            {
+              "Get": {
+                "name": "request.header.X-Apigee-Client-App-Name"
+              }
+            },
+            {
+              "Get": {
+                "name": "request.header.X-Apigee-Client-Request-Id"
+              }
+            },
+            {
+              "Get": {
+                "name": "request.header.X-Forwarded-Proto",
+                "value": "https"
+              }
+            },
+            {
+              "Get": {
+                "name": "analytics_custom_data"
+              }
+            },
+            {
+              "Get": {
+                "name": "analytics"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "StateChange",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "From",
+                "value": "PROXY_POST_RESP_SENT"
+              },
+              {
+                "name": "To",
+                "value": "DEBUG_SESSION"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:298"
+        },
+        {
+          "ActionResult": "ErrorMessage",
+          "headers": [
+            {
+              "name": "apiproxy",
+              "value": "testable-v1 r1"
+            },
+            {
+              "name": "Content-Length",
+              "value": "117"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "WWW-Authenticate",
+              "value": "Bearer realm=\"mcp\",resource_metadata=\"https://apigee.example.demo.altostrat.com/.well-known/oauth-protected-resource/testable-v1/mcp\""
+            },
+            {
+              "name": "X-Apigee-dp-color",
+              "value": "1-16-0-apigee-4"
+            },
+            {
+              "name": "X-Apigee-environment",
+              "value": "eval"
+            },
+            {
+              "name": "X-Apigee-fault-code",
+              "value": "steps.raisefault.RaiseFault"
+            },
+            {
+              "name": "X-Apigee-fault-flag",
+              "value": "false"
+            },
+            {
+              "name": "X-Apigee-fault-flow",
+              "value": "t1"
+            },
+            {
+              "name": "X-Apigee-fault-policy",
+              "value": "raisefault/RF-Missing-Authz-Header"
+            },
+            {
+              "name": "X-Apigee-fault-revision",
+              "value": "/organizations/plentiful-story-6712/environments/eval/apiproxies/testable-v1/revisions/1"
+            },
+            {
+              "name": "X-Apigee-fault-source",
+              "value": "policy"
+            },
+            {
+              "name": "X-Apigee-Message-ID",
+              "value": "f7de66fd-8ad3-4c2a-b786-5380f1fe9cc55"
+            },
+            {
+              "name": "X-Apigee-organization",
+              "value": "plentiful-story-6712"
+            },
+            {
+              "name": "X-Apigee-proxy",
+              "value": "/organizations/plentiful-story-6712/environments/eval/apiproxies/testable-v1/revisions/1"
+            },
+            {
+              "name": "X-Apigee-proxy-basepath",
+              "value": "/testable-v1"
+            },
+            {
+              "name": "X-Apigee-region",
+              "value": "us-west1"
+            },
+            {
+              "name": "X-Apigee-Tracking-ID",
+              "value": "14e266ce5f053c94146fa00c2d75aabb"
+            },
+            {
+              "name": "x-request-id",
+              "value": "694da59c-522c-4565-9455-fa044be8f8d4"
+            }
+          ],
+          "reasonPhrase": "Unauthorized",
+          "statusCode": "401",
+          "content": "{\"error\":{\"code\":401.01,\"message\":\"that request was invalid; pass an Authorization header.\"}}"
+        }
+      ]
+    },
+    {
+      "id": "Condition",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "Expression",
+                "value": "(\"endpoint1\" equals proxy.name)"
+              },
+              {
+                "name": "ExpressionResult",
+                "value": "true"
+              },
+              {
+                "name": "Tree",
+                "value": "PROXY_endpoint1"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:298"
+        },
+        {
+          "ActionResult": "VariableAccess",
+          "accessList": [
+            {
+              "Get": {
+                "name": "proxy.name",
+                "value": "endpoint1"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Condition",
+      "results": [
+        {
+          "ActionResult": "DebugInfo",
+          "properties": {
+            "property": [
+              {
+                "name": "Expression",
+                "value": "(\"target1\" equals target.name)"
+              },
+              {
+                "name": "ExpressionResult",
+                "value": "false"
+              },
+              {
+                "name": "Tree",
+                "value": "TARGET_target1"
+              }
+            ]
+          },
+          "timestamp": "08-11-25 00:12:44:298"
+        },
+        {
+          "ActionResult": "VariableAccess",
+          "accessList": [
+            {
+              "Get": {
+                "name": "target.name"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Paused"
+    }
+  ]
+}
+
+At this point, we could examine the debug session and evaluate assertions......
+
